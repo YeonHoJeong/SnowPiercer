@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Snow Piercer</title>
+    <link href="css/base.css" rel="stylesheet" media="screen" />
+    <link href="css/snowflakes.css" rel="stylesheet" media="screen" />
+    <link href="css/logo.css" rel="stylesheet"/>
+    <style>
+        #train {
+            width : 200%;
+        }
+    </style>
+</head>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+</script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="./js/tweenMax/TweenMax.min.js"></script>
+<script src="js/snowflakes/ready.min.js" type="text/javascript"></script>
+<script src="js/snowflakes/snowflakes.js" type="text/javascript"></script>
+<script src="js/logo_scene.js" type="text/javascript"></script>
+<script src="js/main_scene.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var snowflakes;
+
+    $(document).ready(function(){   //logo 부분
+        logo_start();
+    });
+
+
+    var logoTextComplete = function() {
+        var logoTextOpacity = new TweenMax.fromTo('#logoContainer .logo_text', 5, {opacity : 1}, {
+            opacity : 0,
+            ease: SteppedEase.config(45),
+        });
+
+        var logoContainerOpacity = new TweenMax.fromTo('#logoContainer', 3, {opacity : 1}, {
+            opacity : 0,
+            ease: SteppedEase.config(45),
+            onComplete: changeMainScene
+        });
+    };
+    var changeMainScene = function() {
+        var bodyChangeColor = new TweenMax.fromTo('body', 2, {backgroundColor : 'black'}, {
+            backgroundColor : '#87cefa',
+            ease: SteppedEase.config(45),
+            onComplete : removeLogoConatiner
+        });
+        snowflakes = new Snowflakes('container','snowflakesContainer');
+        snowflakes.create(50);
+    };
+    var removeLogoConatiner = function() {
+        TweenMax.killChildTweensOf($('#logoContainer'));
+        $('#logoContainer').remove();
+
+    };
+
+</script>
+<body id="index">
+        <div id="logoContainer">
+            <div class ="logo_text" id="sul"><img src="img/sul.png"></div>
+            <div class ="logo_text" id="guk"><img src="img/guk.png"></div>
+            <div class ="logo_text" id="yul"><img src="img/yul.png"></div>
+            <div class ="logo_text" id="cha"><img src="img/cha.png"></div>
+        </div>
+        <div id="snowflakesContainer">  <!-- snowflakes Container 는 따로 두어야한다.-->
+
+        </div>
+        <div id="mainContainer">
+
+        </div>
+</body>
+</html>

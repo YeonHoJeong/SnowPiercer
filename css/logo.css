@@ -1,0 +1,10 @@
+#logoContainer{
+    width : 6000px;
+    height : 100%;
+}
+.logo_text{
+    opacity : 0;
+    display : inline-block;
+    font-size : 30px;
+    color : whitesmoke;
+}
