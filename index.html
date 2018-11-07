@@ -30,9 +30,17 @@
 <script type="text/javascript">
     var snowflakes;
     var vm = this;
+
     $(document).ready(function(){   //logo 부분
+
         logo_start();
         //changeMainScene();
+    });
+    /*마우스 휠 위,아래 -> 왼쪽, 오른쪽*/
+    $(window).on('mousewheel DOMMouseScroll',function(e) {
+        var delta = Math.max(-1, Math.min(1, (e.originalEvent.wheelDelta || -e.originalEvent.detail)));
+        $(this).scrollLeft( $(this).scrollLeft() - ( delta * 40 ) );
+        e.preventDefault();
     });
 
 
