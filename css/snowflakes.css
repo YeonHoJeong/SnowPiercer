@@ -5,15 +5,12 @@
 ***********************************************/
 
 /* make sure horizontal scrollbars don't pop up because snowflakes stray over the edge */
-body { 
-	overflow-x: hidden;
-}
 
 /* snowflakes container */
 #snowflakesContainer {
 	top: -100px;
 	position: absolute;
-	width: 100%;
+	width: 5100px;
 }
 
 /* default animation and transform */
@@ -24,7 +21,7 @@ body {
 	opacity: 0.5;
 	height: 7px;
 	width: 7px;
-	z-index: -1;
+	z-index: 1;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -39,7 +36,7 @@ body {
 		-webkit-transform: translate3d(0,0,0) rotate(0deg);
 	}
 	100% { 
-		-webkit-transform: translate3d(0,1000px,0) rotate(360deg);
+		-webkit-transform: translate3d(0,900px,0) rotate(360deg);
 	}	
 }
 
@@ -48,7 +45,7 @@ body {
 		-moz-transform: translate3d(0,0,0) rotate(0deg);
 	}
 	100% { 
-		-moz-transform: translate(0,1000px) rotate(360deg);
+		-moz-transform: translate(0,900px) rotate(360deg);
 	}	
 }
 

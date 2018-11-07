@@ -6,28 +6,33 @@
     <link href="css/base.css" rel="stylesheet" media="screen" />
     <link href="css/snowflakes.css" rel="stylesheet" media="screen" />
     <link href="css/logo.css" rel="stylesheet"/>
-    <style>
-        #train {
-            width : 200%;
-        }
-    </style>
+    <link href="css/main.css" rel="stylesheet"/>
 </head>
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
 </script>
+<!--d3.js-->
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<!--TweenMax-->
 <script src="./js/tweenMax/TweenMax.min.js"></script>
+<!--Scroll Magic-->
+<script src="./js/scrollmagic/ScrollMagic.js"></script>
+<script src="./js/scrollmagic/plugins/animation.gsap.js"></script>
+<script src="./js/scrollmagic/plugins/debug.addIndicators.js"></script>
+<script src="./js/scrollmagic/plugins/jquery.ScrollMagic.js"></script>
+
 <script src="js/snowflakes/ready.min.js" type="text/javascript"></script>
 <script src="js/snowflakes/snowflakes.js" type="text/javascript"></script>
 <script src="js/logo_scene.js" type="text/javascript"></script>
 <script src="js/main_scene.js" type="text/javascript"></script>
 <script type="text/javascript">
     var snowflakes;
-
+    var vm = this;
     $(document).ready(function(){   //logo 부분
         logo_start();
+        //changeMainScene();
     });
 
 
@@ -44,17 +49,18 @@
         });
     };
     var changeMainScene = function() {
+        $('#logoContainer').remove();
         var bodyChangeColor = new TweenMax.fromTo('body', 2, {backgroundColor : 'black'}, {
             backgroundColor : '#87cefa',
             ease: SteppedEase.config(45),
             onComplete : removeLogoConatiner
         });
         snowflakes = new Snowflakes('container','snowflakesContainer');
-        snowflakes.create(50);
+        snowflakes.create(180);
+        TweenMax.delayedCall(2,main_start)
     };
     var removeLogoConatiner = function() {
         TweenMax.killChildTweensOf($('#logoContainer'));
-        $('#logoContainer').remove();
 
     };
 
@@ -70,7 +76,10 @@
 
         </div>
         <div id="mainContainer">
+            <div id="trainArea"></div>
+            <div id="railArea">
 
+            </div>
         </div>
 </body>
 </html>

@@ -1,5 +1,7 @@
-body { 
+body {
 	background-color: black;
+	overflow-y : hidden;
+	overflow-x: scroll;
 	font-family: helvetica, sans serif;
 	font-size: 14px;
 }
