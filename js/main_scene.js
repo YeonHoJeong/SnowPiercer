@@ -8,14 +8,14 @@ var trainIntroMove = function(){
 };
 
 var trainFirstBack = function(){
-    // build tween
+    // build tween  //스크롤 할 때 어떤 이미지가 움직일 것인가?
     var tween = new TimelineMax ()
         .add([
             TweenMax.to("#mainContainer #trainArea", 1, {backgroundPosition: "0 -1000%", ease: Linear.easeNone}),
         ]);
 
     // build scene
-    var scene = new ScrollMagic.Scene({triggerElement: "#mainContainer", duration: 2000})
+    var scene = new ScrollMagic.Scene({triggerElement: "#mainContainer", duration: 2000, offset : 450})  // 오프셋 잡아주고,
         .setTween(tween)
         .setPin("#mainContainer")
         .addTo(controller);

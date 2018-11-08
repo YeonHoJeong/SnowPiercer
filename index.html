@@ -33,16 +33,25 @@
 
     $(document).ready(function(){   //logo 부분
 
-        logo_start();
-        //changeMainScene();
+        //logo_start();
+        snowFlakesStart();
+        changeMainScene();
     });
     /*마우스 휠 위,아래 -> 왼쪽, 오른쪽*/
+
     $(window).on('mousewheel DOMMouseScroll',function(e) {
         var delta = Math.max(-1, Math.min(1, (e.originalEvent.wheelDelta || -e.originalEvent.detail)));
-        $(this).scrollLeft( $(this).scrollLeft() - ( delta * 40 ) );
+        if( Math.abs(e.deltaX) ) {
+            this.scrollLeft -= (e.deltaX * 20);
+        } else {
+            $(this).scrollLeft( $(this).scrollLeft() - ( delta * 40 ) );
+        }
         e.preventDefault();
     });
-
+    var snowFlakesStart = function(){
+        snowflakes = new Snowflakes('container','snowflakesContainer');
+        snowflakes.create(180);
+    };
 
     var logoTextComplete = function() {
         var logoTextOpacity = new TweenMax.fromTo('#logoContainer .logo_text', 5, {opacity : 1}, {
@@ -63,13 +72,11 @@
             ease: SteppedEase.config(45),
             onComplete : removeLogoConatiner
         });
-        snowflakes = new Snowflakes('container','snowflakesContainer');
-        snowflakes.create(180);
+
         TweenMax.delayedCall(2,main_start)
     };
     var removeLogoConatiner = function() {
         TweenMax.killChildTweensOf($('#logoContainer'));
-
     };
 
 </script>
@@ -86,7 +93,6 @@
         <div id="mainContainer">
             <div id="trainArea"></div>
             <div id="railArea">
-
             </div>
         </div>
 </body>

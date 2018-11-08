@@ -8,10 +8,17 @@
     float : left;
     width : 100%;
     height : 300px;
-    top : 450px;
-    background-image: url("../img/train2.jpeg");
+    top : 50%;
+    background-image: url("../img/train.png");
     background-repeat: no-repeat;
 }
 #railArea{
-
+    position : relative;
+    float : left;
+    width : 100%;
+    height : 90px;
+    top : 380px;
+    left : -0.5%;
+    background-image: url("../img/snow_rail.png");
+    background-repeat: no-repeat;
 }
