@@ -30,13 +30,14 @@
 <script src="js/logo_scene.js" type="text/javascript"></script>
 <script src="js/main_scene.js" type="text/javascript"></script>
 <script src="js/chart/chartList.js"></script>
+<script src="js/description/description.js"></script>
 <script type="text/javascript">
     var snowflakes;
     var vm = this;
 
     $(document).ready(function(){   //logo 부분
 
-        //ogo_start();
+        //logo_start();
         snowFlakesStart();
         changeMainScene();
     });
@@ -48,6 +49,14 @@
             this.scrollLeft -= (e.deltaX * 20);
         } else {
             $(this).scrollLeft( $(this).scrollLeft() - ( delta * 10 ) );
+        }
+        if($(this).scrollLeft() >1080 && $(this).scrollLeft() <1100){
+            trainStep_1();
+        }
+        else if($(this).scrollLeft() >1100 && $(this).scrollLeft() <1120){
+            trainStep_2();
+        } else if($(this).scrollLeft() >2740 && $(this).scrollLeft() <2760){
+            trainStep_3();
         }
         console.log($(this).scrollLeft());
         e.preventDefault();

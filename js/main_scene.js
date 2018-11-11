@@ -8,18 +8,34 @@ var trainIntroMove = function(){
         onComplete : trainStep_1
 
     });
-
+    guage_obj = deadGauge(0);
 };
+
+var transition_chart = function(){return new TweenMax.fromTo('#chart',2,{opacity : 0}, {opacity : 1})};
+var transition_description = function(){return new TweenMax.fromTo('#description',2,{opacity : 0}, {opacity : 1})};
+var transition_guage = function(){return new TweenMax.fromTo('#deadArea',2,{opacity : 0}, {opacity : 1})};
+
+var reset_Area = function(){
+    transition_chart().reverse();
+    transition_description().reverse();
+    $("#chart").empty();
+    $("#description").empty();
+    TweenMax.killAll();
+};
+
 /*1번째 이벤트*/
 var trainStep_1 = function(){
     // build tween  //스크롤 할 때 어떤 이미지가 움직일 것인가?
-    var transition_chart_step1 = new TweenMax.fromTo('#chart',2,{opacity : 0}, {opacity : 1});
-    var transition_description_step1 = new TweenMax.fromTo('#decription',2,{opacity : 0}, {opacity : 1});
-    var transition_guage = new TweenMax.fromTo('#deadGauge',2,{opacity : 0}, {opacity : 1});
-    guage_obj = deadGauge(100);
+    guage_obj.update(100);
+
+    /*초기화*/
+    reset_Area();
+
+    // 다시실행
+    transition_chart().play();
+    transition_description().play();
+    description_step1();
     sevenMinutes();
-
-
     /*
     var tween = new TimelineMax ()
         .add([
@@ -33,58 +49,46 @@ var trainStep_1 = function(){
        */
 };
 
-/*1번째 이벤트 정리*/
-var tranStepEnd_1 = function(){
-
-};
-
 
 /*2번째 이벤트*/
 var trainStep_2 = function(){
     // build tween  //스크롤 할 때 어떤 이미지가 움직일 것인가?
+
+
+    /*초기화*/
+    reset_Area();
+
+    // 다시실행
+    transition_chart().play();
+    transition_description().play();
+    description_step2();
+    guage_obj.update(100-37);
+    trainRoute();
+    /*
     var tween = new TimelineMax ()
         .add([
-            TweenMax.fromTo("body", 1, {opacity :0},{opacity : 1})
+            TweenMax.fromTo("#mainContainer", 1, {},{})
         ]);
-
     // build scene
-    var scene = new ScrollMagic.Scene({triggerElement: "body", duration: 2000, offset : 900})  // 오프셋 잡아주고,
+    var scene = new ScrollMagic.Scene({triggerElement: "#mainContainer", duration: 2000, offset : 900})  // 오프셋 잡아주고,
         .setTween(tween)
         .setPin("#mainContainer")
         .addTo(controller);
+       */
 };
 
-/*3번째 이벤트*/
+    /*3번째 이벤트*/
 var trainStep_3 = function(){
-    // build tween  //스크롤 할 때 어떤 이미지가 움직일 것인가?
-    var tween = new TimelineMax ()
-        .add([
-            TweenMax.fromTo("body", 1, {opacity :0},{opacity : 1})
-        ]);
+    /*초기화*/
+    reset_Area();
 
-    // build scene
-    var scene = new ScrollMagic.Scene({triggerElement: "body", duration: 2000, offset : 900})  // 오프셋 잡아주고,
-        .setTween(tween)
-        .setPin("#mainContainer")
-        .addTo(controller);
+    // 다시실행
+    transition_chart().play();
+    transition_description().play();
+    description_step3();
+    guage_obj.update(100-73);
+    incidentChart();
 };
-
-/*4번째 이벤트*/
-var trainStep_4 = function(){
-    // build tween  //스크롤 할 때 어떤 이미지가 움직일 것인가?
-    var tween = new TimelineMax ()
-        .add([
-            TweenMax.fromTo("body", 1, {opacity :0},{opacity : 1})
-        ]);
-
-    // build scene
-    var scene = new ScrollMagic.Scene({triggerElement: "body", duration: 2000, offset : 900})  // 오프셋 잡아주고,
-        .setTween(tween)
-        .setPin("#mainContainer")
-        .addTo(controller);
-};
-
-
 
 function main_start(){
     trainIntroMove();

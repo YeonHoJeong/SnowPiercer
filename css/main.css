@@ -8,7 +8,7 @@
     float : left;
     width : 100%;
     height : 300px;
-    top : 50%;
+    top : 60%;
     background-image: url("../img/train.png");
     background-repeat: no-repeat;
 }
@@ -17,7 +17,7 @@
     float : left;
     width : 101%;
     height : 90px;
-    top : 380px;
+    top : 50%;
     left : -0.5%;
     background-image: url("../img/snow_rail.png");
     background-repeat: repeat-x;
@@ -35,13 +35,31 @@
 }
 #description {
     position : fixed;
+    width : auto;
+    height : auto;
+    left : 40%;
+    top : 10%;
+    background-color : rgba(255, 255, 255, 0.4);
+}
+.top-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    float: left;
+    width: 800px;
+    padding: 0 0 50px 10px;
+}
+.clearfix {
+    clear: both;
+}
+h1 {
+    padding: 10px 0 0 10px;
 }
 #deadArea{
     position : fixed;
     width : 100px;
     float : right;
-    right : 5%;
-    top : 3%;
+    right : 2%;
+    top : 40%;
 }
 #deadArea .tooltip{
     position : absolute;
@@ -59,4 +77,24 @@
     fill: #d30b0b;
     opacity :0;
     font-size : 16px;
+}
+
+.node {
+    cursor: pointer;
+}
+
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+}
+
+.node text {
+    font: 12px sans-serif;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
 }
