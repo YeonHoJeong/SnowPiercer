@@ -15,10 +15,48 @@
 #railArea{
     position : relative;
     float : left;
-    width : 100%;
+    width : 101%;
     height : 90px;
     top : 380px;
     left : -0.5%;
     background-image: url("../img/snow_rail.png");
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
+}
+#chart{
+    position : fixed;
+    width : auto;
+    height : auto;
+    left : 0%;
+    top : 0%;
+
+}
+#chart svg{
+    position :absolute;
+}
+#description {
+    position : fixed;
+}
+#deadArea{
+    position : fixed;
+    width : 100px;
+    float : right;
+    right : 5%;
+    top : 3%;
+}
+#deadArea .tooltip{
+    position : absolute;
+    text-align: center;
+    width: 60px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+#deadArea #deadText{
+    fill: #d30b0b;
+    opacity :0;
+    font-size : 16px;
 }
